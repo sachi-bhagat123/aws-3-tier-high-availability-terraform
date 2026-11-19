@@ -1,0 +1,22 @@
+{
+  "DocumentName": "AWS-RunShellScript",
+  "InstanceIds": [
+    "i-0a62cb9d43b9486e1",
+    "i-0fd55753645639de3"
+  ],
+  "Parameters": {
+    "commands": [
+      "echo '===== APACHE STATUS ====='",
+      "sudo systemctl status httpd --no-pager || true",
+      "echo '===== APACHE CONFIGURATION ====='",
+      "sudo apachectl configtest || true",
+      "echo '===== LOCAL HTTP TEST ====='",
+      "curl -sS -o /tmp/web-response.html -w 'HTTP_STATUS=%{http_code}\\n' http://127.0.0.1/ || true",
+      "echo '===== HOMEPAGE FILE ====='",
+      "ls -la /var/www/html/",
+      "head -30 /var/www/html/index.html 2>/dev/null || true",
+      "echo '===== USER DATA LOG ====='",
+      "sudo tail -80 /var/log/cloud-init-output.log || true"
+    ]
+  }
+}

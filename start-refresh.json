@@ -1,0 +1,8 @@
+{
+  "AutoScalingGroupName": "ha-3tier-web-asg",
+  "Preferences": {
+    "MinHealthyPercentage": 50,
+    "InstanceWarmup": 300,
+    "SkipMatching": true
+  }
+}
